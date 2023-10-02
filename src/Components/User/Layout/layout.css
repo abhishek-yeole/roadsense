@@ -1,0 +1,522 @@
+/*============ Google fonts ============*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/*======= CSS variables =======*/
+:root {
+  --dark-color: #000;
+  --white-color: #fff;
+  --body-bg-color: #fff;
+  --section-bg-color: #fff;
+  --navigation-item-hover-color: #00ffff;
+
+  --text-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
+
+  --scroll-bar-color: #cfffff;
+  --scroll-thumb-color: #00ffff;
+  --scroll-thumb-hover-color: rgb(0, 154, 196);
+}
+
+/*======= Scroll bar =======*/
+::-webkit-scrollbar{
+  width: 0px;
+  height: 0px;
+  background: var(--scroll-bar-color);
+}
+
+::-webkit-scrollbar-thumb{
+  width: 100%;
+  background: var(--scroll-thumb-color);
+  border-radius: 2em;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background: var(--scroll-thumb-hover-color);
+}
+
+/*======= Main CSS =======*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  background: var(--body-bg-color);
+}
+html {
+    scroll-behavior: smooth;
+}
+section{
+  position: relative;
+}
+
+.section{
+  color: var(--dark-color);
+  background: var(--section-bg-color);
+  padding: 35px 200px;
+  transition: 0.3s ease;
+}
+
+/*======= Header =======*/
+header{
+  z-index: 7;
+  position: fixed;
+  width: 100%;
+  height: calc(1.5rem + 1rem);
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  transition: 0.5s ease;
+  transition-property: height, background;
+}
+
+.sticky{
+  height: calc(2rem + 1rem);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header .navBar {
+  height: calc(2.5rem + 1rem);
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  transition: 0.3s ease;
+}
+
+.navBar .report {
+  padding: 10px;
+  background-color: rgba(255, 4, 4, 0.7);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  border: solid;
+  border-color: rgba(150, 150, 150, 0.9);
+  border-radius: 8px;
+  border-width: 2px;
+  color: aliceblue;
+  font-weight: bold;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.report:hover {
+  box-shadow: 0 0 8px 2px rgb(255, 71, 71);
+  transform: scale(1.05);
+}
+
+.navBar .center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: flex-start;
+  justify-content: space-around;
+  padding: 5px;
+  width: 20%;
+  margin: 5px;
+}
+
+.navBar .center .logo{
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+  align-content: space-around;
+  align-items: center;
+  justify-content: space-around;
+}
+
+header .navBar .center .logo .img1 {
+  width: 10rem;
+  height: 5rem;
+}
+
+@media screen and (max-width: 900px){
+  header .navBar .center .logo .img1 {
+    width: 4rem;
+    height: 2rem;
+  }
+
+  .navBar .center .logo{
+    display: none;
+  }
+
+  .navBar .center {
+    justify-content: flex-start;
+  }
+}
+
+
+.navBar .account {
+  margin: 5px;
+  padding: 10px;
+  font-size: x-large;
+}
+
+.accountDiv {
+  display: inline;
+  z-index: 9;
+  position: fixed;
+  top:6%;
+  right: 2%;
+  background-color: red;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.accountDiv div {
+  padding: 5px;
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.account-icon {
+  padding: 3px;
+  margin: 3px;
+  font-size: x-large;
+}
+
+
+.navigation .nav-items a .svgContainer .mySVG {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.fillScreenDiv {
+  position: fixed;
+  width: 0%;
+  height: 0%;
+  border-radius: 0 0 30% 0;
+  background-color: rgba(255, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  z-index: 9;
+  transition: width 1s ease-in-out, height 1s ease-in-out;
+}
+
+.fillScreenDiv.move {
+  width: 150%;
+  height: 150%;
+  z-index: 10;
+}
+
+@media screen and (max-width: 1250px){
+  header .nav-bar{
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 900px){
+  header .nav-bar{
+    padding: 25px 20px;
+  }
+
+  .nav-items{
+    display: none;
+  }
+
+  .nav-menu{
+    display: block;
+    size: 100px;
+  }
+}
+
+
+/* Footer */
+
+.footer { 
+  z-index: 999;
+  position: fixed;
+  width: 100%;
+  height: calc(2.7rem + 0.5rem);
+  bottom: 0;
+  left: 0;
+  transition: 0.5s ease;
+  transition-property: height, background;
+  background: rgba(0, 208, 255, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-around;
+  align-content: space-around;
+  font-size: 24px;
+}
+
+.footer-items:nth-child(1) {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+  background-color: transparent;
+  transition: background-color 0.3s;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 6px;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.footer-items:nth-child(2) {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+  background-color: transparent;
+  transition: background-color 0.3s;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 6px;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.footer-items:nth-child(3) {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+  font-size: 28px !important;
+  background-color: transparent;
+  transition: background-color 0.3s;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 6px;
+  border-radius: 0px 0px 50% 50%;
+}
+
+.footer-items:nth-child(4) {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+  background-color: transparent;
+  transition: background-color 0.3s;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 6px;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.footer-items:nth-child(5) {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+  background-color: transparent;
+  transition: background-color 0.3s;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 6px;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.bg-transperent {
+  background-color: transparent;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.footer-items:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.2);
+}
+
+.footer-container .active {
+  background-color: white;
+  color: black;
+}
+
+.footer-items span{
+  padding: 5px;
+  font-size: 18px !important;
+  font-weight: bolder;
+}
+
+@media screen and (max-width: 900px){
+  .footer-items span{
+    display: none;
+  }
+}
+
+
+
+/* RightPannel */
+.right-container {
+  position: fixed;
+  overflow-x: visible;
+  z-index: 5;
+  top: 50%; /* Center vertically */
+  right: 0px; /* Move off-screen initially */
+  width: 220px;
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(-50%); /* Center vertically */
+  transition: right 0.3s ease;
+}
+
+.right-container.open {
+  right :-200px;
+}
+
+.right-open-close-bar {
+  top: 50%;
+  right: 0px;
+  width: 20px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.right-open-close-bar.open {
+  right: 0;
+}
+
+.right-bar {
+  width: 20px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightblue;
+  transition: transform 0.3s ease;
+}
+
+.history {
+  position: relative;
+  top: 50%; /* Center vertically */
+  right: -200px; /* Move off-screen initially */
+  width: 200px;
+  height: 300px;
+  background-color: #f0f0f0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(-50%); /* Center vertically */
+  transition: right 0.3s ease;
+}
+
+.history.open {
+  right: 0; /* Move on-screen when open */
+}
+
+
+
+/* Sidebar.css */
+.sidebar-container {
+  position: fixed;
+  overflow: visible;
+  z-index: 5;
+  top: 35%; /* Center vertically */
+  left: 0px; /* Move off-screen initially */
+  width: 200px;
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(-50%); /* Center vertically */
+  transition: left 0.3s ease;
+}
+
+@media screen and (max-width: 900px){
+  .sidebar-container { 
+    top: 30%;
+  }
+}
+
+.sidebar-container.open {
+  left :-200px;
+}
+
+.open-close-bar {
+  top: 50%;
+  left: 0px;
+  width: 0px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+
+.open-close-bar.open {
+  left: 10px;
+}
+
+.bar {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: rgba(20, 20, 20, 0.8);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  border: solid;
+  border-color: rgba(150, 150, 150, 0.9);
+  border-radius: 8px;
+  border-width: 2px;
+  color: aliceblue;
+  font-weight: bold;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.bar:hover {
+  box-shadow: 0 0 8px 2px #48abe0;
+  transform: scale(1.1);
+}
+
+.sidebar {
+  overflow: scroll;
+  position: relative;
+  top: 50%; /* Center vertically */
+  left: -200px; /* Move off-screen initially */
+  width: 200px;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(-50%); /* Center vertically */
+  transition: left 0.3s ease;
+  border-radius: 8px;
+  margin-left: 5px;
+}
+
+.sidebar.open {
+  left: 0; /* Move on-screen when open */
+}
+

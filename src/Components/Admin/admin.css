@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+}
+
+.admin-control-feed {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.admin-pannel {
+    display: flex;
+    width: 95%;
+    height: 83vh;
+    background-color: rgb(228, 228, 228);
+    margin: 12px;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.admin-view {
+    background-color: rgb(240, 240, 240);
+    display: flex;
+    max-height: 83vh;
+    overflow: scroll;
+    width: 84%;
+    margin: 12px;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.admin-club {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.vertical-line {
+    height: 83vh;
+    width: 2px;
+    background-color: rgb(150, 150, 150);
+    margin: 5px;
+    border-radius: 12px;
+}
+
+@media screen and (max-width: 900px){
+    .admin-control {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    
+    .admin-pannel {
+        position: fixed;
+        z-index: 9;
+        top:auto;
+        bottom: 4%;
+        left:0;
+        display: flex;
+        align-items: center;
+        align-content: space-around;
+        justify-content: space-around;
+        width: 100%;
+        height: 6vh;
+        margin: 0px;
+        padding: 0px;
+        border-radius: 12px 12px 0px 0px;
+    }
+    
+    .admin-view {
+        max-height: 73vh;
+        overflow: scroll;
+        scroll-behavior: smooth;
+        scrollbar-width: 0px !important;
+        width: 94%;
+        margin: 12px;
+        padding: 0px;
+        border-radius: 12px;
+    }
+
+}
