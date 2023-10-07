@@ -7,6 +7,7 @@ import Login from "./Components/Auth/Login";
 import Register from "./Components/Auth/Register";
 import Forgot from "./Components/Auth/Forgot";
 import Admin from "./Components/Admin/Admin";
+import Test from "./Test";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/user" element={<User />} />
         <Route path="/control" element={<Admin />} />
         <Route path="/report" element={<Report />} />
+        <Route path="/test" element={<Test />} />
       </Routes>
     </Router>
   );

@@ -1,19 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import './alert.css';
-
-const alertsData = [
-  { id: 1, message: 'Alert 1: Something happened!', type: 'info' },
-  { id: 2, message: 'Alert 2: Another event occurred.', type: 'info' },
-  { id: 3, message: 'Alert 3: Another event occurred.', type: 'info' },
-  { id: 4, message: 'Alert 4: Another event occurred.', type: 'info' },
-  { id: 5, message: 'Alert 5: Another event occurred.', type: 'warning' },
-  { id: 6, message: 'Alert 6: Another event occurred.', type: 'warning' },
-  { id: 7, message: 'Alert 7: Another event occurred.', type: 'warning' },
-  { id: 8, message: 'Alert 8: Another event occurred.', type: 'error' },
-  { id: 9, message: 'Alert 9: Another event occurred.', type: 'error' },
-  { id: 10, message: 'Alert 10: Another event occurred.', type: 'error' },
-];
 
 const alertTypeIcons = {
     info: 'fa-solid:info-circle',
@@ -22,6 +9,7 @@ const alertTypeIcons = {
 };
 
 const Alert = () => {
+    const [alertsData, setAlertsData] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [expanded, setExpanded] = useState(false);
 
@@ -32,6 +20,20 @@ const Alert = () => {
     const toggleOpen = () => {
         setIsOpen(!isOpen);
     };
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            const storedData = localStorage.getItem('Accident_prediction');
+        
+            if (storedData) {
+                const parsedData = JSON.parse(storedData);
+                setAlertsData(parsedData);
+            }
+        }, 2000);
+        return () => {
+            clearInterval(intervalId);
+        };
+    }, []);
 
   return (
     <div className={`alert-container ${isOpen ? 'open' : ''}`}>
@@ -55,11 +57,10 @@ const Alert = () => {
                 <div className="latest-alert">
                 {alertsData.length > 0 && (
                     <div className="alert-item">
-                        No Alerts...
-                        {/* <div className="alert-icon">
-                            <Icon icon={alertTypeIcons[alertsData[0].type]} />
+                        <div className="alert-icon">
+                            <Icon icon={alertTypeIcons[alertsData[alertsData.length-1].type]} />
                         </div>
-                        <div className="alert-content">{alertsData[0].message}</div> */}
+                        <div className="alert-content">{alertsData[alertsData.length-1].message}</div>
                     </div>
                 )}
                 </div>

@@ -42,7 +42,7 @@ const Register = () => {
                   const data = await response.json();
                   console.log(data);
                   if (data.login) {
-                      window.location.href = '/user';
+                        window.location.href = '/user';
                   } else {
                     console.error('Login success:', data.message);
                   }
@@ -84,6 +84,8 @@ const Register = () => {
                     const data = await response.json();
                     if (data.success) {
                         setshowOTP(true);
+                        setDisplayLoader(false);
+                        setDisplayError(false);
                     } else {
                         setDisplayLoader(false);
                         setDisplayError(true);

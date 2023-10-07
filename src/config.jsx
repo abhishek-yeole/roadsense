@@ -13,7 +13,6 @@ const config = {
     apiUrlPrediction: 'https://parthcodes-meowflask.hf.space/prediction',
     apiUrlFeedback: 'https://roadsense-api.vercel.app/feedback',
     apiUrlOperate: 'https://roadsense-api.vercel.app/operate',
-
 };
   
 export default config;  
