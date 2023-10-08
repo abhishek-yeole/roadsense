@@ -76,15 +76,37 @@ const Permissions = () => {
     const [speed, setSpeed] = useState(0);
     const [error, setError] = useState(null);
     const [alertText, setAlertText] = useState('');
+    const [alerts, setAlerts] = useState([]);
+    const [count, setCount] = useState(1);
+    const [prevSpeed, setPrevSpeed] = useState(0);
   
     const showSpeed = (position) => {
       if (position.coords.speed !== null) {
         setSpeed(((position.coords.speed)*3.6).toFixed(2) + ' km/hr');
-        if (((position.coords.speed)*3.6).toFixed(2) > 50) {
-          setAlertText('True');
+        if (Math.abs(((position.coords.speed)*3.6).toFixed(2) - prevSpeed) <= 5) {
+          // No need to do anything if the speed change is small
+          setAlertText(`False ${count}`);
+          return;
+        } else if (((position.coords.speed)*3.6).toFixed(2) > 50) {
+          setAlertText("True");
+          const newAlert = {
+            predict: true,
+            id: count,
+            message: `Alert ${count}: Please Take caution.`,
+            type: 'warning',
+          };
+    
+          setPrevSpeed(((position.coords.speed)*3.6).toFixed(2));
+    
+          setAlerts((prevAlerts) => [...prevAlerts, newAlert]);
+    
+          // Save alerts to localStorage
+          localStorage.setItem('Accident_prediction', JSON.stringify([...alerts, newAlert]));
+    
+          setCount((prevCount) => prevCount + 1);
         }
         else {
-          setAlertText('False');
+          setAlertText(`Falsely ${count}`);
         }
       } else {
         setSpeed('Speed information not available');
@@ -106,33 +128,6 @@ const Permissions = () => {
           setError('Geolocation is not supported in this browser.');
         }
     }, []);
-
-    const [alerts, setAlerts] = useState([]);
-    const [count, setCount] = useState(1);
-  
-    useEffect(() => {
-      const intervalId = setInterval(() => {
-        if (speed > 50) {
-          const newAlert = {
-            predict: true,
-            id: count,
-            message: `Alert ${count}: Please Take caution.`,
-            type: 'warning',
-          };
-  
-          setAlerts(prevAlerts => [...prevAlerts, newAlert]);
-  
-          localStorage.setItem('Accident_prediction', JSON.stringify(alerts));
-  
-          setCount(prevCount => prevCount + 1);
-        }
-      }, 2000);
-  
-      return () => {
-        clearInterval(intervalId);
-      };
-    }, [count, speed, alerts]);
-  
 
     return (
         <div>
