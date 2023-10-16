@@ -10,7 +10,7 @@ const config = {
     apiUrlReset: 'https://roadsense-api.vercel.app/reset',
     apiUrlLogout: 'https://roadsense-api.vercel.app/logout',
     apiUrlVerifyForgot: 'https://roadsense-api.vercel.app/verifyforgot',
-    apiUrlPrediction: 'https://parthcodes-meowflask.hf.space/prediction',
+    apiUrlPrediction: 'https://abhicodes-roadsense.hf.space/prediction',
     apiUrlFeedback: 'https://roadsense-api.vercel.app/feedback',
     apiUrlOperate: 'https://roadsense-api.vercel.app/operate',
 };
